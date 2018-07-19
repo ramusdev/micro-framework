@@ -16,4 +16,4 @@ $routes->add( '/wether/city', 'WetherController::city' );
 
 $routes->run();
 
-//print_r( $routes );
+//echo 'routes';

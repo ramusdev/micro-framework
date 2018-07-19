@@ -33,23 +33,25 @@ class Router
  	{
 	    $this->match();
 
+	    //print_r( $this->params );
+
 		$params = explode( '::', $this->params );
 
 		$controller = $params[0];
 		$method = $params[1];
 
-		$path = 'app\controllers\\' . $controller .  '.php';
+		$controller_path = 'app\controllers\\' . $controller;
 
-		if ( ! class_exists( $path ) ) {
-			 //throw new Exception( 'Controller not found' );
+		if ( ! class_exists( $controller_path ) ) {
+			 //throw new \Exception( 'Controller not found' );
 		}
 
-		if ( ! method_exists( $method, $controller ) ) {
-			 //throw new Exception( 'Method not found' );
+		if ( ! method_exists( $controller_path, $method ) ) {
+			//throw new \Exception( 'Method not found' );
 		}
 
-		$controller = new $controller;
-		$controller->$method();
+		$instance = new $controller_path;
+		$instance->$method();
 	}
 
 }

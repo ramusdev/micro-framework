@@ -5,7 +5,7 @@
  *
 */
 
-//namespace app\controllers;
+namespace app\controllers;
 
 class AboutController {
 

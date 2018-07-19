@@ -5,37 +5,14 @@
  * 
 */
 
-//namespace Core;
+// Composer autoloader
+require __DIR__ .  '/vendor/autoload.php';
 
-// Composer autoload
-//require __DIR__ .  '/vendor/autoload.php';
+// Class autoloader
+require_once __DIR__ . '/core/Bootstrap.php';
 
-//Load bootstrap
-//require __DIR__ . '/bootstrap.php';
-
-
-use core\Router;
-
-function classLoader($class)
-{ 
-  $path = $class . '.php';
-
-  if ( file_exists( $path ) ) {
-  	require_once $path;
-  }
-}
-
-spl_autoload_register('classLoader');
-
-
-$routes = new Router();
-print_r( $routes );
-
-
-
-
-
-
+// Load application
+require_once __DIR__ . '/app/routes.php';
 
 /*
 $routes = new Router();
