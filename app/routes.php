@@ -5,10 +5,11 @@
  *
 */
 
-//use Core\Router;
+use core\Router;
 
 $routes = new Router();
 
+$routes->add( '/', 'MainController::index' );
 $routes->add( '/about', 'AboutController::index' );
 $routes->add( '/contacts', 'ContactsController::index' );
 $routes->add( '/wether/city', 'WetherController::city' );

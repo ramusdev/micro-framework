@@ -1,6 +1,13 @@
 <?php
+/**
+ * About controller
+ *
+ *
+*/
 
-class AboutController extends Controller {
+//namespace app\controllers;
+
+class AboutController {
 
 	public function index() {
 		echo 'from about';	
