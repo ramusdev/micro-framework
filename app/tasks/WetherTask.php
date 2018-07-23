@@ -11,6 +11,6 @@ class WetherTask
 {
 	public function parseWether()
 	{
-		echo 'from wether task';
+		//echo 'from wether task';
 	}
 }

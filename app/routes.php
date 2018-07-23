@@ -9,11 +9,8 @@ use core\Router;
 
 $routes = new Router();
 
-$routes->add( '/', 'MainController::index' );
-$routes->add( '/about', 'AboutController::indexAction' );
-$routes->add( '/contacts', 'ContactsController::index' );
-$routes->add( '/wether/city', 'WetherController::city' );
+$routes->add( '/', 'Main::indexAction' );
+$routes->add( '/about', 'About::indexAction' );
+$routes->add( '/wether', 'Wether::indexAction' );
 
 $routes->run();
-
-//echo 'routes';

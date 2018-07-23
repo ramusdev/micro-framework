@@ -40,7 +40,7 @@ class Router
 		$controller = $params[0];
 		$method = $params[1];
 
-		$controller_path = 'app\controllers\\' . $controller;
+		$controller_path = 'app\controllers\\' . $controller . 'Controller';
 
 		if ( ! class_exists( $controller_path ) ) {
 			 //throw new \Exception( 'Controller not found' );
@@ -50,7 +50,7 @@ class Router
 			//throw new \Exception( 'Method not found' );
 		}
 
-		$instance = new $controller_path;
+		$instance = new $controller_path( $controller );
 		$instance->$method();
 	}
 

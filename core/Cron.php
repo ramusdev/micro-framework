@@ -71,7 +71,7 @@ class Cron
 			$timeToRun = $lastTimeRun->modify( '+' . $value[ 'frequency' ] );
 
 			$controllerMethod = explode( '::', $value['action'] );
-			$controller = 'app\tasks\\' . $controllerMethod[0];
+			$controller = 'app\tasks\\' . $controllerMethod[0] . 'Task';
 			$method = $controllerMethod[1];
 
 			if ( $timeToRun < $timeNow ) {
