@@ -15,14 +15,10 @@ class WetherController extends Controller
 	{
 		echo 'wether controller';
 
-		$wether = $this->model->getWether();
+		$data = $this->model->getWether();
+		$wether = unserialize($data);
 
-		print_r($wether);
 
-		$data = array(
-			'title' => 'The title data',
-			'content' => 'The content'
-		);
-
+		$this->view->render($wether);
 	}
 }

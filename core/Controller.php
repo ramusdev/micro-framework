@@ -12,6 +12,7 @@ class Controller
 	public function __construct( $model )
 	{
 		$this->model = $this->loadModel( $model );
+		$this->view = new View( 'Wether::indexAction' );
 	}
 
 	public function loadModel( $model )
