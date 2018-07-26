@@ -20,9 +20,11 @@ class View
 		$this->method = $controllerMethod[1];
 	}
 
-	public function render()
+	public function render( $vars )
 	{
-		$path = '/app/views/' . $this->controller . $this->method . '.php';
+		extract( $vars );
+		
+		$path = 'app/views/' . $this->controller . '/' . $this->method . '.php';
 
 		if ( file_exists( $path ) ) {
 			require_once( $path );

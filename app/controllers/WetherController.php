@@ -13,12 +13,11 @@ class WetherController extends Controller
 {
 	public function indexAction() 
 	{
-		echo 'wether controller';
+		//echo 'wether controller';
 
 		$data = $this->model->getWether();
 		$wether = unserialize($data);
 
-
-		$this->view->render($wether);
+		$this->view->render( array( 'wether' => $wether, 'title' => 'Wether page' ) );
 	}
 }

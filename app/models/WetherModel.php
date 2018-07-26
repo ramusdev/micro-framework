@@ -23,8 +23,6 @@ class WetherModel
 
 		return $data;
 
-		
-
 	}
 }
 
