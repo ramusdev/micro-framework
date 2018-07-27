@@ -9,10 +9,10 @@ namespace core;
 
 class Model
 {
-	public $db;
+	public $pdo;
 
 	public function __construct()
 	{
-		//$db = new \mysqli( 'localhost', 'mysql', 'mysql', 'mf' );
+		$this->pdo = new \PDO('mysql:host=localhost;dbname=mf', 'mysql', 'mysql' );
 	}
 }

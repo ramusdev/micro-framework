@@ -87,10 +87,10 @@ class Cron
 	{
 		$controllerMethod = explode( '::', $route );
 
-		$controller = 'app\controllers\\' . $controllerMethod[0];
+		$controller = 'app\controllers\\' . $controllerMethod[0] . 'Controller';
 		$method = $controllerMethod[1];
 
-		$instance = new $controller;
+		$instance = new $controller( $controllerMethod[0] );
 		$instance->$method();
 	}
 		

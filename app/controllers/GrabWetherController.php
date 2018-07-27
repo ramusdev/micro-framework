@@ -7,10 +7,13 @@
 
 namespace app\controllers;
 
-class CronController
+use core\Controller;
+
+class GrabWetherController extends Controller
 {
 	public function grabWether()
 	{
+
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL,"https://www.gismeteo.ua/weather-zaporizhia-5093/");
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -41,7 +44,7 @@ class CronController
 		$date = new \DateTime('now');
 		$dateSql = $date->format( 'Y-m-d H:i:s' );
 
-		$mysqli = new \mysqli( 'localhost', 'mysql', 'mysql', 'mf' );
-		$mysqli->query( "INSERT INTO wether SET wether = '$wether_serialize', last_update = '$dateSql'" );
+		$this->model->insertWether( $wether_serialize, $dateSql );
+
 	}
 }

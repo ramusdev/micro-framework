@@ -13,8 +13,6 @@ class WetherController extends Controller
 {
 	public function indexAction() 
 	{
-		//echo 'wether controller';
-
 		$data = $this->model->getWether();
 		$wether = unserialize($data);
 

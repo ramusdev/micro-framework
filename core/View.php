@@ -24,10 +24,16 @@ class View
 	{
 		extract( $vars );
 		
-		$path = 'app/views/' . $this->controller . '/' . $this->method . '.php';
+		$path = 'app/views/' . $this->controller . 'View/' . $this->method . '.php';
 
 		if ( file_exists( $path ) ) {
 			require_once( $path );
 		}
+	}
+
+	public function redirect( $url )
+	{
+		header( 'location: ' . $url );
+		die();
 	}
 }

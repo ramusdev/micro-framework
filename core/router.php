@@ -50,7 +50,7 @@ class Router
 			//throw new \Exception( 'Method not found' );
 		}
 
-		$instance = new $controller_path( $controller );
+		$instance = new $controller_path( $this->params );
 		$instance->$method();
 	}
 
