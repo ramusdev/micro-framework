@@ -29,6 +29,9 @@ class View
 		if ( file_exists( $path ) ) {
 			require_once( $path );
 		}
+		else {
+			throw new \Exception( 'Views not exists' );
+		}
 	}
 
 	public function redirect( $url )

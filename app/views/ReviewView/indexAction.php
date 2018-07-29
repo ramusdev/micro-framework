@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Погода</title>
+	<title>Отзыв</title>
 	 <!-- Bootstrap -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -15,9 +15,9 @@
           <div id="navbar" class="navbar-default">
             <ul class="nav navbar-nav">
               <li><a href="/">Главная</a></li>
-              <li class="active"><a href="/wether">Погода</a></li>
+              <li><a href="/wether">Погода</a></li>
               <li><a href="/contacts">Добавить отзыв</a></li>
-              <li><a href="/review">Список отзывов</a></li>
+              <li class="active"><a href="/review">Список отзывов</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/">Авторизация<span class="sr-only">(current)</span></a></li>
@@ -26,19 +26,26 @@
         </div>
       </nav>
       <div class="page-header">
-  		  <h2>Погода - Запорожье</h2>
+  		  <h2>Список отзывов</h2>
 	  </div>
-	  <div class="alert alert-success" role="alert">
-		Последнее обновление данных о погоды: <?php echo $date; ?>
-	  </div>
-	  <div class="well">
-	  	<p>Температура воздуха: <?php echo $wether->temp; ?> °C</p>
-		<p>Температура воды: <?php echo $wether->water; ?> °C</p>
-		<p>Скорость ветра: <?php echo $wether->wind; ?> м/с</p>
-		<p>Давление: <?php echo $wether->press; ?> мм рт. ст.</p>
-		<p>Влажность: <?php echo $wether->hum; ?> %</p>
-	  </div>
-		
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>
+
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="static/js/jquery-3.3.1.min.js"></script>

@@ -73,7 +73,7 @@ class Cron
 			if ( $timeToRun < $timeNow ) {
 				
 				$nameTask = $value['name'];
-				//$mysqli->query( "UPDATE cron SET last = '$timeSql' WHERE name = '$nameTask'" );
+				$mysqli->query( "UPDATE cron SET last = '$timeSql' WHERE name = '$nameTask'" );
 
 				$this->taskAction( $value[ 'action' ] );
 				//$instance = new $controller;

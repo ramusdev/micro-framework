@@ -21,7 +21,7 @@ class GrabWetherController extends Controller
 		curl_close($curl);
 
 		$dom = new \DOMDocument();
-		$dom->loadHTML($exec);
+		@$dom->loadHTML($exec);
 
 		$xpath = new \DOMXPath($dom);
 		$wether = new \stdClass();
