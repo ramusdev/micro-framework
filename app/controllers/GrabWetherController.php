@@ -1,18 +1,18 @@
 <?php
 /**
- * About controller
+ * Cron controller
  *
  *
 */
 
 namespace app\controllers;
 
-//use GuzzleHttp\Client;
-//use core\Database;
+use core\Controller;
 
-class AboutController {
-
-	public function indexAction() {
+class GrabWetherController extends Controller
+{
+	public function grabWether()
+	{
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL,"https://www.gismeteo.ua/weather-zaporizhia-5093/");
@@ -41,21 +41,10 @@ class AboutController {
 
 		$wether_serialize = serialize($wether);
 
-		//$wind = $xpath->query("//dd[@class='value m_wind ms']")->item(0)->textContent;
-		//$temp = $xpath->query("//dd[@class='value m_temp c']")->item(0)->textContent;
-		//$press = $xpath->query("//dd[@class='value m_press torr']")->item(0)->textContent;
-		//$hum = $xpath->query("//div[@class='wicon hum']")->item(0)->textContent;
-		//$water = $xpath->query("//div[@class='wicon water']/dd")->item(0)->textContent;
-
 		$date = new \DateTime('now');
 		$dateSql = $date->format( 'Y-m-d H:i:s' );
 
-		$mysqli = new \mysqli( 'localhost', 'mysql', 'mysql', 'mf' );
-		$mysqli->query( "INSERT INTO wether SET wether = '$wether_serialize', last_update = '$dateSql'" );
+		$this->model->insertWether( $wether_serialize, $dateSql );
 
-
-			
 	}
-
-
 }

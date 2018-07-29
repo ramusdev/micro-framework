@@ -7,14 +7,17 @@
 
 namespace app\models;
 
-class WetherModel
+use core\Model;
+
+class WetherModel extends Model
 {	
 	public function getWether() {
-		//echo 'wether model class';
 
-		$db = new \mysqli( 'localhost', 'mysql', 'mysql', 'mf' );
+		$query = $this->pdo->query( "SELECT wether FROM wether ORDER BY last_update DESC LIMIT 1" );
+		//$data = $query->fetchAll(PDO::FETCH_ROW);
+		$data = $query->fetchColumn();
 
-		return $db->query( "SELECT wether FROM wether" );
+		return $data;
 
 	}
 }

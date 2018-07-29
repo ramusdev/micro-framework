@@ -13,16 +13,9 @@ class WetherController extends Controller
 {
 	public function indexAction() 
 	{
-		echo 'wether controller';
+		$data = $this->model->getWether();
+		$wether = unserialize($data);
 
-		$wether = $this->model->getWether();
-
-		print_r($wether);
-
-		$data = array(
-			'title' => 'The title data',
-			'content' => 'The content'
-		);
-
+		$this->view->render( array( 'wether' => $wether, 'title' => 'Wether page' ) );
 	}
 }

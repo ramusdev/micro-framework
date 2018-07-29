@@ -9,6 +9,6 @@ use core\Cron;
 
 $cron = new Cron();
 
-$cron->addTask( 'wether', 'Wether::parseWether', '10 minutes' );
+$cron->addTask( 'wether_1', 'GrabWether::grabWether', '10 minutes' );
 
-//$cron->runTask();
+$cron->runTask();

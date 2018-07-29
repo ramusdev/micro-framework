@@ -33,10 +33,6 @@ class Cron
 		);
 	}
 
-	public function deleteTask() {
-
-	}
-
 	public function runTask() {
 		//print_r( $this->task );
 
@@ -70,27 +66,34 @@ class Cron
 			$lastTimeRun = new \DateTime( $value['last'] );
 			$timeToRun = $lastTimeRun->modify( '+' . $value[ 'frequency' ] );
 
-			$controllerMethod = explode( '::', $value['action'] );
-			$controller = 'app\tasks\\' . $controllerMethod[0] . 'Task';
-			$method = $controllerMethod[1];
+			//$controllerMethod = explode( '::', $value['action'] );
+			//$controller = 'app\tasks\\' . $controllerMethod[0] . 'Task';
+			//$method = $controllerMethod[1];
 
 			if ( $timeToRun < $timeNow ) {
 				
 				$nameTask = $value['name'];
 				//$mysqli->query( "UPDATE cron SET last = '$timeSql' WHERE name = '$nameTask'" );
 
-				$instance = new $controller;
-				$instance->$method();
+				$this->taskAction( $value[ 'action' ] );
+				//$instance = new $controller;
+				//$instance->$method();
 			}
 		}
 		
 	}
-		
-	
 
-	public function infoTask() {
-		
+	public function taskAction( $route )
+	{
+		$controllerMethod = explode( '::', $route );
+
+		$controller = 'app\controllers\\' . $controllerMethod[0] . 'Controller';
+		$method = $controllerMethod[1];
+
+		$instance = new $controller( $controllerMethod[0] );
+		$instance->$method();
 	}
+		
 }
 
 
