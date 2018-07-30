@@ -14,7 +14,7 @@
           </div>
           <div id="navbar" class="navbar-default">
             <ul class="nav navbar-nav">
-              <li><a href="/weather">Главная</a></li>
+              <li><a href="/">Главная</a></li>
               <li class="active"><a href="/weather">Погода</a></li>
               <li><a href="/contacts">Добавить отзыв</a></li>
               <li><a href="/review">Список отзывов</a></li>

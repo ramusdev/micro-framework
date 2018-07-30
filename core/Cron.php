@@ -37,6 +37,7 @@ class Cron
 		//print_r( $this->task );
 
 		$mysqli = new \mysqli( 'localhost', 'mysql', 'mysql', 'mf' );
+		//$mysqli = new \mysqli( 'localhost', 'a0139772_bwt', 'Mypassword219', 'a0139772_bwt' );
 
 		$query = "INSERT IGNORE INTO cron (name, action, frequency, last) VALUES ";
 

@@ -14,7 +14,7 @@
           </div>
           <div id="navbar" class="navbar-default">
             <ul class="nav navbar-nav">
-              <li><a href="/weather">Главная</a></li>
+              <li><a href="/">Главная</a></li>
               <li><a href="/weather">Погода</a></li>
               <li class="active"><a href="/contacts">Добавить отзыв</a></li>
               <li><a href="/review">Список отзывов</a></li>
@@ -32,14 +32,14 @@
         <form method="post" action="/contacts/add">
     	  	<div class="input-group">
             <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span></span>
-            <input class="form-control" placeholder="Имя" type="text" name="name">
+            <input class="form-control" required placeholder="Имя" type="text" name="name">
           </div><br>
           <div class="input-group">
             <span class="input-group-addon">@</span>
-            <input class="form-control" placeholder="Email" type="text" name="email">
+            <input class="form-control" required placeholder="Email" type="email" name="email">
           </div><br>
           <div class="form-group">
-            <textarea class="form-control" placeholder="Сообщение" name="message"></textarea>
+            <textarea class="form-control" required placeholder="Сообщение" name="message"></textarea>
           </div>
           <button type="submit" class="btn btn-default">Отправить</button>
         </form>
