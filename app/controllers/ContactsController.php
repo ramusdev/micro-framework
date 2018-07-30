@@ -26,11 +26,11 @@ class ContactsController extends Controller
 			'message' => 'text'
 		) );
 
-		if ( ! $valid ) echo 'NOT VALID CONTROLLER';
+		if ( $valid ) {
+			$this->model->insertForm( $_POST );
+		}
 
-
-		//$this->model->insertForm();
-		//$this->view->redirect( '/contacts' );
+		$this->view->redirect( '/contacts' );
+		
 	}
-	
 }

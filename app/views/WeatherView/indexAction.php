@@ -10,33 +10,33 @@
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">MF</a>
+            <a class="navbar-brand" href="/">BWT</a>
           </div>
           <div id="navbar" class="navbar-default">
             <ul class="nav navbar-nav">
-              <li><a href="/">Главная</a></li>
-              <li class="active"><a href="/wether">Погода</a></li>
+              <li><a href="/weather">Главная</a></li>
+              <li class="active"><a href="/weather">Погода</a></li>
               <li><a href="/contacts">Добавить отзыв</a></li>
               <li><a href="/review">Список отзывов</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/">Авторизация<span class="sr-only">(current)</span></a></li>
+              <li><a href="/signin">Войти<span class="sr-only"></span></a></li>
             </ul>
           </div>
         </div>
       </nav>
       <div class="page-header">
-  		  <h2>Погода - Запорожье</h2>
+  		  <h2>Погода</h2>
 	  </div>
 	  <div class="alert alert-success" role="alert">
-		Последнее обновление данных о погоды: <?php echo $date; ?>
+		Последнее обновление данных о погоде: <?php echo $date; ?>
 	  </div>
 	  <div class="well">
-	  	<p>Температура воздуха: <?php echo $wether->temp; ?> °C</p>
-		<p>Температура воды: <?php echo $wether->water; ?> °C</p>
-		<p>Скорость ветра: <?php echo $wether->wind; ?> м/с</p>
-		<p>Давление: <?php echo $wether->press; ?> мм рт. ст.</p>
-		<p>Влажность: <?php echo $wether->hum; ?> %</p>
+	      <p>Температура воздуха: <?php echo $weather->temp; ?> °C</p>
+		    <p>Температура воды: <?php echo $weather->water; ?> °C</p>
+		    <p>Скорость ветра: <?php echo $weather->wind; ?> м/с</p>
+		    <p>Давление: <?php echo $weather->press; ?> мм рт. ст.</p>
+		    <p>Влажность: <?php echo $weather->hum; ?> %</p>
 	  </div>
 		
 	</div>

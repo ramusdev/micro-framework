@@ -1,6 +1,6 @@
 <?php
 /**
- * List controller
+ * Review controller
  *
  *
 */
@@ -13,6 +13,9 @@ class ReviewController extends Controller
 {
 	public function indexAction()
 	{
-		$this->view->render( array( 'title' => 'Title page' ) );
+		$reviews = $this->model->getReviews();
+		//print_r( $reviews );
+
+		$this->view->render( array( 'reviews' => $reviews ) );
 	}
 }

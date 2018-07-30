@@ -1,6 +1,6 @@
 <?php
 /**
- * Cron controller
+ * Grab weather controller
  *
  *
 */
@@ -9,22 +9,22 @@ namespace app\controllers;
 
 use core\Controller;
 
-class GrabWetherController extends Controller
+class GrabWeatherController extends Controller
 {
-	public function grabWether()
+	public function grabWeather()
 	{
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL,"https://www.gismeteo.ua/weather-zaporizhia-5093/");
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		$exec = curl_exec($curl);
-		curl_close($curl);
+		curl_setopt( $curl, CURLOPT_URL,"https://www.gismeteo.ua/weather-zaporizhia-5093/" );
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
+		$exec = curl_exec( $curl );
+		curl_close( $curl );
 
 		$dom = new \DOMDocument();
-		@$dom->loadHTML($exec);
+		@$dom->loadHTML( $exec );
 
-		$xpath = new \DOMXPath($dom);
-		$wether = new \stdClass();
+		$xpath = new \DOMXPath( $dom );
+		$weather = new \stdClass();
 
 		$pattern = array(
 			'wind' => "//dd[@class='value m_wind ms']",
@@ -36,15 +36,15 @@ class GrabWetherController extends Controller
 
 		foreach ( $pattern as $key => $value ) {
 			$data = $xpath->query($value)->item(0)->textContent;
-			$wether->$key = preg_replace('/[^0-9]/', '', $data);
+			$weather->$key = preg_replace('/[^0-9]/', '', $data);
 		}
 
-		$wether_serialize = serialize($wether);
+		$weather_serialize = serialize( $weather );
 
 		$date = new \DateTime('now');
 		$dateSql = $date->format( 'Y-m-d H:i:s' );
 
-		$this->model->insertWether( $wether_serialize, $dateSql );
+		$this->model->insertWeather( $weather_serialize, $dateSql );
 
 	}
 }

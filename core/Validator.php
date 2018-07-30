@@ -14,26 +14,32 @@ class Validator
 		foreach ( $data as $key => $value ) {
 			$action = $value . 'Validate';
 
-			if ( ! $this->$action( $_POST[ $key ] ) ) {
-				return false;
-			}
-			
-			return true;
+			if ( ! $this->$action( $_POST[ $key ] ) ) return false;
 		}
+
+		return true;
 	}
 
 	public function textValidate( $formField )
 	{
-		//if ( strlen( $formField ) > 1 ) {
-			//return false;
-		//}
+		if ( strlen( $formField ) > 1000 ) {
+			return false;
+		}
 
-		return false;
+		if ( $formField != strip_tags( $formField ) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public function emailValidate( $formField )
 	{
-		return false;
+		if ( ! filter_var( $formField, FILTER_VALIDATE_EMAIL ) ) {
+			return false;
+		}
+
+		return true;
 	}
 }
 
