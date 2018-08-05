@@ -1,6 +1,6 @@
 <?php
 /**
- * Bootstrap class auto loader
+ * Bootstrap
  *
  *
 */

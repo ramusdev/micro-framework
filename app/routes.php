@@ -16,5 +16,6 @@ $routes->add( '/contacts/add', 'Contacts::addAction' );
 $routes->add( '/review', 'Review::indexAction' );
 $routes->add( '/signin', 'Signin::indexAction' );
 $routes->add( '/signup', 'Signup::indexAction' );
+$routes->add( '/signup/add', 'Signup::addAction' );
 
 $routes->run();
