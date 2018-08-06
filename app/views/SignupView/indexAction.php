@@ -44,11 +44,11 @@
             <input class="form-control" placeholder="Email" type="email" name="email">
           </div><br>
           <div class="input-group">
-            <span class="input-group-addon"></span>
+            <span class="input-group-addon">G</span>
             <input class="form-control" placeholder="Пол" type="text" name="gender">
           </div><br>
           <div class="input-group">
-            <span class="input-group-addon"></span>
+            <span class="input-group-addon">B</span>
             <input class="form-control" placeholder="День рождение" type="text" name="birthday">
           </div><br>
           <div class="input-group">

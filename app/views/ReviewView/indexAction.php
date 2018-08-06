@@ -20,7 +20,8 @@
               <li class="active"><a href="/review">Список отзывов</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/singin">Войти<span class="sr-only"></span></a></li>
+              <li><a href="/signin">Войти<span class="sr-only"></span></a></li>
+              <li><a href="/signup">Регистрация<span class="sr-only"></span></a></li>
             </ul>
           </div>
         </div>

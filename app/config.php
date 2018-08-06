@@ -19,5 +19,3 @@ define( 'DB_USER', 'mysql' );
 
 // Database hosname
 define( 'DB_HOST', 'localhost' );
-
-//$this->pdo = new \PDO('mysql:host=localhost;dbname=a0139772_bwt', 'a0139772_bwt', 'Mypassword219' );

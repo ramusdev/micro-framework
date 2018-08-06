@@ -19,7 +19,6 @@ class SignupController extends Controller
 
 	public function addAction()
 	{
-
 		$validator = new Validator();
 		$valid = $validator->validate( array(
 			'first_name' => 'text',
@@ -29,9 +28,12 @@ class SignupController extends Controller
 			'birthday' => 'text'
 		) );
 
-		$this->model->checkUser( $_POST );
-		$this->model->insertUser( $_POST );
+		$user = $this->model->checkUser( $_POST );
 
+		if ( $user && $valid ) {
+			$this->model->insertUser( $_POST );
+		}
+		
 		$this->view->redirect( '/signup' );
 	}
 }

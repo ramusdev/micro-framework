@@ -3,29 +3,30 @@
  * Cron task class
  *
  *
-*/
-
+ */
 
 namespace core;
 
+use core\Database;
+use PDO;
+
 class Cron
 {
+	protected $pdo;
+	protected $date;
+	protected $dateObj;
 	protected $task = array();
 
-	public function __construct() 
+	public function __construct()
 	{
+		$this->pdo = Database::pdoConnect();
 
+		$this->dateObj = $dateTime = new \DateTime( 'now' );
+		$this->date = $dateTime->format( 'Y-m-d H:i:s' );
 	}
 
-	/**
-	 * Cron add tasks
-	 *
-	 * @since 1.0.0
-	 * @param string $name Unique task name
-	 * @param string $path Class and method for run
-	 * @param string $frequency Task run frequency
-	*/
-	public function addTask( $name, $path, $frequency ) {
+	public function addTask( $name, $path, $frequency )
+	{
 		$this->task[] = array(
 			'name' => $name,
 			'action' => $path,
@@ -33,55 +34,42 @@ class Cron
 		);
 	}
 
-	public function runTask() {
-		//print_r( $this->task );
+	public function runTask() 
+	{
+		$this->insertTaskDb();
+		$this->checkTaskRun();
+	}
 
-		$mysqli = new \mysqli( 'localhost', 'mysql', 'mysql', 'mf' );
-		//$mysqli = new \mysqli( 'localhost', 'a0139772_bwt', 'Mypassword219', 'a0139772_bwt' );
-
-		$query = "INSERT IGNORE INTO cron (name, action, frequency, last) VALUES ";
-
-		$dateTime = new \DateTime( 'now' );
-		$date = $dateTime->format( 'Y-m-d H:i:s' );
+	public function insertTaskDb() 
+	{
+		$stmt = $this->pdo->prepare( "INSERT IGNORE INTO cron SET name = :name, action = :action, frequency = :frequency, last = :last" );
 
 		foreach ( $this->task as $key => $value ) {
-
-			$name = $value[ 'name' ];
-			$action = $value[ 'action' ];
-			$frequency = $value[ 'frequency' ];
-
-			$insert[] = "('$name', '$action', '$frequency', '$date')";
+			$stmt->bindValue( ':name', $value[ 'name' ] );
+			$stmt->bindValue( ':action', $value[ 'action' ] );
+		 	$stmt->bindValue( ':frequency', $value[ 'frequency' ] );
+		 	$stmt->bindValue( ':last', $this->date );
+		 	$stmt->execute();
 		}
+	}
 
-		$mysqli->query( $query . implode( ',', $insert ) );
+	public function checkTaskRun()
+	{
+		$stmt = $this->pdo->query( "SELECT * FROM cron" );
+		$tasks = $stmt->fetchAll( PDO::FETCH_ASSOC );
 
-	
-		// Cron run task
-		$cronTask = $mysqli->query( "SELECT * FROM cron" );
+		foreach ( $tasks as $key => $value ) {
 
-		$timeNow = new \DateTime( 'now' );
-		$timeSql = $dateTime->format( 'Y-m-d H:i:s' );
+			$nameTask = $value[ 'name' ];
 
-		while ( $value = $cronTask->fetch_assoc() ) {
-			
-			$lastTimeRun = new \DateTime( $value['last'] );
+			$lastTimeRun = new \DateTime( $value[ 'last' ] );
 			$timeToRun = $lastTimeRun->modify( '+' . $value[ 'frequency' ] );
 
-			//$controllerMethod = explode( '::', $value['action'] );
-			//$controller = 'app\tasks\\' . $controllerMethod[0] . 'Task';
-			//$method = $controllerMethod[1];
-
-			if ( $timeToRun < $timeNow ) {
-				
-				$nameTask = $value['name'];
-				$mysqli->query( "UPDATE cron SET last = '$timeSql' WHERE name = '$nameTask'" );
-
+			if ( $timeToRun < $this->dateObj ) {
+				$this->pdo->query( "UPDATE cron SET last = '$this->date' WHERE name = '$nameTask'" );
 				$this->taskAction( $value[ 'action' ] );
-				//$instance = new $controller;
-				//$instance->$method();
 			}
 		}
-		
 	}
 
 	public function taskAction( $route )
@@ -93,8 +81,7 @@ class Cron
 
 		$instance = new $controller( $controllerMethod[0] );
 		$instance->$method();
-	}
-		
+	}	
 }
 
 

@@ -21,6 +21,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/signin">Войти<span class="sr-only"></span></a></li>
+              <li><a href="/signup">Регистрация<span class="sr-only"></span></a></li>
             </ul>
           </div>
         </div>
@@ -38,7 +39,6 @@
 		    <p>Давление: <?php echo $weather->press; ?> мм рт. ст.</p>
 		    <p>Влажность: <?php echo $weather->hum; ?> %</p>
 	  </div>
-		
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="static/js/jquery-3.3.1.min.js"></script>
