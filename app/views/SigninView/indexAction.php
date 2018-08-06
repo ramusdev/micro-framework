@@ -27,35 +27,19 @@
         </div>
       </nav>
       <div class="page-header">
-        <h2>Регистрация</h2>
+        <h2>Авторизация</h2>
     </div>
     <div class="well">
-        <form method="post" action="/signup/add">
+        <form method="post" action="/signin/login">
           <div class="input-group">
             <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span></span>
-            <input class="form-control" placeholder="Имя" type="text" name="first_name">
-          </div><br>
-          <div class="input-group">
-            <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span></span>
-            <input class="form-control" placeholder="Фамилия" type="text" name="last_name">
-          </div><br>
-            <div class="input-group">
-            <span class="input-group-addon">@</span>
-            <input class="form-control" placeholder="Email" type="email" name="email">
-          </div><br>
-          <div class="input-group">
-            <span class="input-group-addon">G</span>
-            <input class="form-control" placeholder="Пол" type="text" name="gender">
-          </div><br>
-          <div class="input-group">
-            <span class="input-group-addon">B</span>
-            <input class="form-control" placeholder="День рождение" type="text" name="birthday">
+            <input class="form-control" placeholder="Email" type="text" name="email">
           </div><br>
           <div class="input-group">
             <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-lock" aria-hidden="true"></span></span>
             <input class="form-control" placeholder="Пароль" type="text" name="password">
           </div><br>
-          <button type="submit" class="btn btn-default">Регистрация</button>
+          <button type="submit" class="btn btn-default">Авторизация</button>
         </form>
     </div>
   </div>

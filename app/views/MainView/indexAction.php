@@ -10,7 +10,7 @@
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">BWT</a>
+            <a class="navbar-brand" href="/">MF</a>
           </div>
           <div id="navbar" class="navbar-default">
             <ul class="nav navbar-nav">

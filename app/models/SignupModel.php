@@ -3,7 +3,7 @@
  * Signup model
  *
  *
-*/
+ */
 
 namespace app\models;
 

@@ -3,7 +3,7 @@
  * Signup controller
  *
  *
-*/
+ */
 
 namespace app\controllers;
 
@@ -30,9 +30,7 @@ class SignupController extends Controller
 
 		$user = $this->model->checkUser( $_POST );
 
-		if ( $user && $valid ) {
-			$this->model->insertUser( $_POST );
-		}
+		$this->model->insertUser( $_POST );
 		
 		$this->view->redirect( '/signup' );
 	}
