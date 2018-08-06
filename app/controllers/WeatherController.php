@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use core\Controller;
+use core\Database;
 
 class WeatherController extends Controller
 {
