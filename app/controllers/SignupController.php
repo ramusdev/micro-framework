@@ -28,9 +28,13 @@ class SignupController extends Controller
 			'birthday' => 'text'
 		) );
 
-		$user = $this->model->checkUser( $_POST );
-
-		$this->model->insertUser( $_POST );
+		if ( $valid ) {
+			$user = $this->model->checkUser( $_POST );
+		}
+		
+		if ( ! $user ) {
+			$this->model->insertUser( $_POST );
+		}
 		
 		$this->view->redirect( '/signup' );
 	}

@@ -10,7 +10,7 @@
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/">MF</a>
+            <a class="navbar-brand" href="/">BWT</a>
           </div>
           <div id="navbar" class="navbar-default">
             <ul class="nav navbar-nav">
@@ -20,8 +20,13 @@
               <li><a href="/review">Список отзывов</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/signin">Войти<span class="sr-only"></span></a></li>
-              <li><a href="/signup">Регистрация<span class="sr-only"></span></a></li>
+              <?php if ( ! $_SESSION[ 'auth' ] ) : ?>
+                <li><a href="/signin">Войти<span class="sr-only"></span></a></li>
+                <li><a href="/signup">Регистрация<span class="sr-only"></span></a></li>
+              <?php else : ?>
+                <li><a href=""><?php echo $_SESSION[ 'auth' ][ 'user_name' ]; ?><span class="sr-only"></span></a></li>
+                <li><a href="/signin/logout">Выйти<span class="sr-only"></span></a></li>
+              <?php endif; ?>
             </ul>
           </div>
         </div>

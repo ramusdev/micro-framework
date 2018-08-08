@@ -7,6 +7,9 @@
 
 namespace core;
 
+use core\Acl;
+use core\View;
+
 class Controller
 {
 
@@ -14,18 +17,21 @@ class Controller
 	public $controller;
 	public $method;
 
-	public function __construct( $route )
+	public function __construct( $action, $acl )
 	{
-		$this->route = $route;
+		if ( ! Acl::checkAccess( $acl ) ) {
+			View::errorCode( 403 );
+		}
 
-		$controllerMethod = explode( '::', $route );
+		$this->route = $action;
+
+		$controllerMethod = explode( '::', $this->route );
 		$this->controller = $controllerMethod[0];
 		$this->method = $controllerMethod[1];
 
 		$this->model = $this->loadModel();
 		$this->view = $this->loadView();
 	}
-
 
 	public function loadModel()
 	{

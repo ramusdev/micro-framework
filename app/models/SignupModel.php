@@ -23,7 +23,7 @@ class SignupModel extends Model
 		$password = password_hash( $post['password'], PASSWORD_BCRYPT );
 		$token = bin2hex( random_bytes( 64 ) );
 
-		$this->pdo->query( "INSERT INTO user SET first_name = '$first_name', last_name = '$last_name', email = '$email', gender = '$gender', birthday = '$birthday', password = '$password', token = '$token'" );
+		$this->pdo->query( "INSERT INTO user SET first_name = '$first_name', last_name = '$last_name', email = '$email', gender = '$gender', birthday = '$birthday', role = 'user', password = '$password', token = '$token'" );
 	}
 
 	public function checkUser( $post )

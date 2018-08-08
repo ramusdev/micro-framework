@@ -79,7 +79,7 @@ class Cron
 		$controller = 'app\controllers\\' . $controllerMethod[0] . 'Controller';
 		$method = $controllerMethod[1];
 
-		$instance = new $controller( $controllerMethod[0] );
+		$instance = new $controller( $controllerMethod[0], array( 'guest' ) );
 		$instance->$method();
 	}	
 }

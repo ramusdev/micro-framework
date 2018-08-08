@@ -7,14 +7,21 @@
 
 namespace core;
 
+use core\View;
+
 class Router
 {	
 	protected $routes = array();
-	protected $params = array();
+	protected $action = array();
+	protected $acl = array();
 
-	public function add( $key, $params )
+	public function add( $path, $action, $acl )
 	{
-		$this->routes[$key] = $params;
+		$this->routes[] = array(
+			'path' => $path,
+			'action' => $action,
+			'acl' => $acl
+		);
 	}
 
 	public function match()
@@ -22,9 +29,10 @@ class Router
 		$url = $_SERVER[ 'REQUEST_URI' ];
 
 		foreach ( $this->routes as $key => $value ) {
-			$route = preg_match( '#^' . $key . '$#', $url, $matches );
+			$route = preg_match( '#^' . $value[ 'path' ] . '$#', $url, $matches );
 			if ( $route ) {
-				$this->params = $value;
+				$this->action = $value[ 'action' ];
+				$this->acl = $value[ 'acl' ];
 			}
 		}
 	}
@@ -33,9 +41,9 @@ class Router
  	{
 	    $this->match();
 
-	    //print_r( $this->params );
+	    if ( ! $this->action ) View::errorCode( 404 );
 
-		$params = explode( '::', $this->params );
+		$params = explode( '::', $this->action );
 
 		$controller = $params[0];
 		$method = $params[1];
@@ -43,14 +51,14 @@ class Router
 		$controller_path = 'app\controllers\\' . $controller . 'Controller';
 
 		if ( ! class_exists( $controller_path ) ) {
-			 //throw new \Exception( 'Controller not found' );
+			View::errorCode( 404 );
 		}
 
 		if ( ! method_exists( $controller_path, $method ) ) {
-			//throw new \Exception( 'Method not found' );
+			View::errorCode( 404 );
 		}
 
-		$instance = new $controller_path( $this->params );
+		$instance = new $controller_path( $this->action, $this->acl );
 		$instance->$method();
 	}
 

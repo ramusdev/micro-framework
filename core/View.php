@@ -39,4 +39,13 @@ class View
 		header( 'location: ' . $url );
 		die();
 	}
+
+	public function errorCode( $code )
+	{
+		http_response_code( $code ); 
+
+		require_once 'app/views/Errors/' . $code . '.php';
+
+		die;
+	}
 }
