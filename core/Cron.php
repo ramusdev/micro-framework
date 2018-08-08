@@ -65,10 +65,10 @@ class Cron
 			$lastTimeRun = new \DateTime( $value[ 'last' ] );
 			$timeToRun = $lastTimeRun->modify( '+' . $value[ 'frequency' ] );
 
-			//if ( $timeToRun < $this->dateObj ) {
+			if ( $timeToRun < $this->dateObj ) {
 				$this->pdo->query( "UPDATE cron SET last = '$this->date' WHERE name = '$nameTask'" );
 				$this->taskAction( $value[ 'action' ] );
-			//}
+			}
 		}
 	}
 
