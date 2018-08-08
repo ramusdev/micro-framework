@@ -58,7 +58,7 @@ class Router
 			View::errorCode( 404 );
 		}
 
-		$instance = new $controller_path( $this->action, $this->acl );
+		$instance = new $controller_path( $controller, $method, $this->acl );
 		$instance->$method();
 	}
 

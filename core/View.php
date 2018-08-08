@@ -12,12 +12,10 @@ class View
 	public $controller;
 	public $method;
 
-	public function __construct( $route )
+	public function __construct( $controller, $method )
 	{
-		$controllerMethod = explode( '::', $route );
-
-		$this->controller = $controllerMethod[0];
-		$this->method = $controllerMethod[1];
+		$this->controller = $controller;
+		$this->method = $method;
 	}
 
 	public function render( $vars )
@@ -45,7 +43,6 @@ class View
 		http_response_code( $code ); 
 
 		require_once 'app/views/Errors/' . $code . '.php';
-
 		die;
 	}
 }

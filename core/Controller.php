@@ -17,17 +17,14 @@ class Controller
 	public $controller;
 	public $method;
 
-	public function __construct( $action, $acl )
+	public function __construct( $controller, $method, $acl )
 	{
 		if ( ! Acl::checkAccess( $acl ) ) {
 			View::errorCode( 403 );
 		}
 
-		$this->route = $action;
-
-		$controllerMethod = explode( '::', $this->route );
-		$this->controller = $controllerMethod[0];
-		$this->method = $controllerMethod[1];
+		$this->controller = $controller;
+		$this->method = $method;
 
 		$this->model = $this->loadModel();
 		$this->view = $this->loadView();
@@ -41,7 +38,7 @@ class Controller
 
 	public function loadView()
 	{
-		return new View( $this->route );
+		return new View( $this->controller, $this->method );
 	}
 	
 }
