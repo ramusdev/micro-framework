@@ -9,16 +9,13 @@
 ini_set( 'display_errors', 1 );
 
 // Database name
-//define( 'DB_NAME', 'mf' );
-define( 'DB_NAME', 'a0139772_bwt' );
+define( 'DB_NAME', 'mf' );
 
 // Database password
-//define( 'DB_PASSWORD', 'mysql' );
-define( 'DB_PASSWORD', 'A9VHH94T' );
+define( 'DB_PASSWORD', 'mysql' );
 
 // Database username
-//define( 'DB_USER', 'mysql' );
-define( 'DB_USER', 'a0139772_bwt' );
+define( 'DB_USER', 'mysql' );
 
 // Database hosname
 define( 'DB_HOST', 'localhost' );
