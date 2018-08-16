@@ -14,9 +14,13 @@ class Router
 	protected $routes = array();
 	protected $action = array();
 	protected $acl = array();
+	protected $params = array();
 
 	public function add( $path, $action, $acl )
 	{
+		$path = preg_replace('/\{([a-z0-9]+)\}/', '(?P<\1>[a-z0-9]+)', $path);
+        $path = '#^'. $path . '$#';
+
 		$this->routes[] = array(
 			'path' => $path,
 			'action' => $action,
@@ -29,8 +33,12 @@ class Router
 		$url = $_SERVER[ 'REQUEST_URI' ];
 
 		foreach ( $this->routes as $key => $value ) {
-			$route = preg_match( '#^' . $value[ 'path' ] . '$#', $url, $matches );
+			$route = preg_match( $value[ 'path' ], $url, $matches );
+
 			if ( $route ) {
+				foreach ( $matches as $keyMatch => $valueMatch ) {
+					$this->params[$keyMatch] = $valueMatch;
+				}
 				$this->action = $value[ 'action' ];
 				$this->acl = $value[ 'acl' ];
 			}
@@ -43,22 +51,22 @@ class Router
 
 	    if ( ! $this->action ) View::errorCode( 404 );
 
-		$params = explode( '::', $this->action );
+		$controllerMethod = explode( '::', $this->action );
 
-		$controller = $params[0];
-		$method = $params[1];
+		$controller = $controllerMethod[0];
+		$method = $controllerMethod[1];
 
-		$controller_path = 'app\controllers\\' . $controller . 'Controller';
+		$controllerPath = 'app\controllers\\' . $controller . 'Controller';
 
-		if ( ! class_exists( $controller_path ) ) {
+		if ( ! class_exists( $controllerPath ) ) {
 			View::errorCode( 404 );
 		}
 
-		if ( ! method_exists( $controller_path, $method ) ) {
+		if ( ! method_exists( $controllerPath, $method ) ) {
 			View::errorCode( 404 );
 		}
 
-		$instance = new $controller_path( $controller, $method, $this->acl );
+		$instance = new $controllerPath( $controller, $method, $this->params, $this->acl );
 		$instance->$method();
 	}
 

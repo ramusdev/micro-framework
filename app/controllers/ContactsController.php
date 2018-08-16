@@ -14,7 +14,7 @@ class ContactsController extends Controller
 {
 	public function indexAction()
 	{
-		$this->view->render( array( 'title' => 'Page title' ) );
+		$this->view->render( 'indexAction.php', array( 'title' => 'Page title' ) );
 	}
 
 	public function addAction()

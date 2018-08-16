@@ -13,6 +13,6 @@ class MainController extends Controller
 {
 	public function indexAction()
 	{
-		$this->view->render( array( 'title' => 'Title page' ) );
+		$this->view->render( 'indexAction.php', array( 'title' => 'Title page' ) );
 	}
 }

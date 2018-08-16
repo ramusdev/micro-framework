@@ -14,7 +14,7 @@ class SignupController extends Controller
 {
 	public function indexAction()
 	{
-		$this->view->render( array( 'title' => 'title page' ) );
+		$this->view->render( 'indexAction.php', array( 'title' => 'title page' ) );
 	}
 
 	public function addAction()

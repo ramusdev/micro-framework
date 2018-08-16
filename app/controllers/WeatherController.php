@@ -20,6 +20,6 @@ class WeatherController extends Controller
 		$dateTime = new \DateTime( $data[0]['last_update'] );
 		$date = $dateTime->format( 'd.m.Y H:i:s' );
 
-		$this->view->render( array( 'weather' => $weather, 'date' => $date ) );
+		$this->view->render( 'indexAction.php', array( 'weather' => $weather, 'date' => $date ) );
 	}
 }

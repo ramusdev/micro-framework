@@ -16,8 +16,9 @@ class Controller
 	public $route;
 	public $controller;
 	public $method;
+	public $params;
 
-	public function __construct( $controller, $method, $acl )
+	public function __construct( $controller, $method, $params = array(), $acl = array( 'guest' ) )
 	{
 		if ( ! Acl::checkAccess( $acl ) ) {
 			View::errorCode( 403 );
@@ -25,6 +26,8 @@ class Controller
 
 		$this->controller = $controller;
 		$this->method = $method;
+
+		$this->params = $params;
 
 		$this->model = $this->loadModel();
 		$this->view = $this->loadView();

@@ -3,7 +3,7 @@
 <head>
   <title>Review</title>
    <!-- Bootstrap -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -32,26 +32,22 @@
         </div>
       </nav>
       <div class="page-header">
-        <h2>Авторизация</h2>
+        <h2>Введите новый пароль</h2>
     </div>
     <div class="well">
-        <form method="post" action="/signin/login">
-          <div class="input-group">
-            <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span></span>
-            <input class="form-control" placeholder="Email" type="text" name="email">
-          </div><br>
+        <form method="post" action="/reset/password">
           <div class="input-group">
             <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-lock" aria-hidden="true"></span></span>
             <input class="form-control" placeholder="Пароль" type="text" name="password">
           </div><br>
-          <button type="submit" class="btn btn-default">Авторизация</button>
-          <a type="submit" href="/reset" class="btn btn-default">Сброс пароля</a>
+          <button type="submit" class="btn btn-default">Обновить пароль</button>
+          <input type="hidden" name="token" value="<?php echo $token; ?>">
         </form>
     </div>
   </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
 </body>
 </html>

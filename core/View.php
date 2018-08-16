@@ -18,11 +18,11 @@ class View
 		$this->method = $method;
 	}
 
-	public function render( $vars )
+	public function render( $template, $vars )
 	{
 		extract( $vars );
 		
-		$path = 'app/views/' . $this->controller . 'View/' . $this->method . '.php';
+		$path = 'app/views/' . $this->controller . 'View/' . $template;
 
 		if ( file_exists( $path ) ) {
 			require_once( $path );

@@ -19,5 +19,9 @@ $routes->add( '/signin/login', 'Signin::loginAction', array( 'guest' ) );
 $routes->add( '/signin/logout', 'Signin::logoutAction', array( 'guest' ) );
 $routes->add( '/signup', 'Signup::indexAction', array( 'guest' ) );
 $routes->add( '/signup/add', 'Signup::addAction', array( 'guest' ) );
+$routes->add( '/reset', 'Reset::indexAction', array( 'guest' ) );
+$routes->add( '/reset/action', 'Reset::resetAction', array( 'guest' ) );
+$routes->add( '/reset/set/{token}', 'Reset::setAction', array( 'guest' ) );
+$routes->add( '/reset/password', 'Reset::passwordAction', array( 'guest' ) );
 
 $routes->run();

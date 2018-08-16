@@ -15,6 +15,6 @@ class ReviewController extends Controller
 	{
 		$reviews = $this->model->getReviews();
 
-		$this->view->render( array( 'reviews' => $reviews ) );
+		$this->view->render( 'indexAction.php', array( 'reviews' => $reviews ) );
 	}
 }
