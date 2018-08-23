@@ -40,12 +40,6 @@
             <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span></span>
             <input class="form-control" placeholder="Email" type="text" name="email">
           </div><br>
-          <!--
-          <div class="input-group">
-            <span class="input-group-addon"> <span class="glyphicon glyphicon glyphicon-lock" aria-hidden="true"></span></span>
-            <input class="form-control" placeholder="Пароль" type="text" name="password">
-          </div><br>
-          -->
           <button type="submit" class="btn btn-default">Сброс пароля</button>
         </form>
     </div>
