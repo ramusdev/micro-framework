@@ -14,6 +14,7 @@ function classLoader( $class )
 }
 spl_autoload_register( 'classLoader' );
 
+// Start session
 session_start();
 
 
