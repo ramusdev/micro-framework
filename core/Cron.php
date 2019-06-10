@@ -7,7 +7,8 @@
 
 namespace core;
 
-use core\Database;
+use core\Database\DatabaseConfiguration;
+use core\Database\DatabaseConnection;
 use PDO;
 
 class Cron
@@ -18,8 +19,16 @@ class Cron
 	protected $task = array();
 
 	public function __construct()
-	{
-		$this->pdo = Database::pdoConnect();
+	{   
+        $configuration = new DatabaseConfiguration([
+            'host' => DB_HOST,
+            'user' => DB_USER,
+            'name' => DB_NAME,
+            'password' => DB_PASSWORD
+        ]);
+
+        $connection = new DatabaseConnection($configuration);
+        $this->pdo = $connection->getConnection();
 
 		$this->dateObj = $dateTime = new \DateTime( 'now' );
 		$this->date = $dateTime->format( 'Y-m-d H:i:s' );

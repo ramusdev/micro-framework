@@ -13,7 +13,7 @@ $routes->add( '/', 'Main::indexAction', array( 'guest' ) );
 $routes->add( '/weather', 'Weather::indexAction', array( 'user' ) );
 $routes->add( '/contacts', 'Contacts::indexAction', array( 'guest' ) );
 $routes->add( '/contacts/add', 'Contacts::addAction', array( 'guest' ) );
-$routes->add( '/review', 'Review::indexAction', array( 'user' ) );
+$routes->add( '/review', 'Review::indexAction', array( 'guest' ) );
 $routes->add( '/signin', 'Signin::indexAction', array( 'guest' ) );
 $routes->add( '/signin/login', 'Signin::loginAction', array( 'guest' ) );
 $routes->add( '/signin/logout', 'Signin::logoutAction', array( 'guest' ) );
